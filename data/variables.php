@@ -22,6 +22,8 @@ echo $name . $number;
 // On concatenation, numbers are converted into strings when concatenated with strings.
 // Dots are used to concatenated variables
 
+// You can use html tags in variables and they are executed as tags when echoed.
+
 ?>
 
 </body>

@@ -69,10 +69,15 @@ echo $NAME; //error
 // NAME = 2000; //error
 $NAME = 2000; //$NAME and NAME are different things.
 echo $NAME;
+echo "<br>";
 //to define a constant in PHP you can use the define function that takes two parameters:
 //the first parameter is the name of the constant and the second its value.
 //Note that the constant doesn't get the $ operator.  
 	
+// Constants can also be defined using the const keyword
+
+const NUMBER = 1000;
+echo NUMBER;
 
  ?> 
 

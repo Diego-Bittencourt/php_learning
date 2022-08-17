@@ -11,9 +11,11 @@
 
     $number = 4;
 
-    while($number < 10) {
-        echo "looping...";
-        $number = $number + 1;
+    while($number <= 10) {
+        // echo "looping...";
+        // $number = $number + 1;
+        echo $counter;
+        $counter++;
     }
 
     ?>

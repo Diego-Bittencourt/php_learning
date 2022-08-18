@@ -20,7 +20,9 @@ sort($list);
 echo "<br>";
 print_r($list);
 // sort sorts the array ascending. It changes the original array.
+//sort also works with strings inside and array
 
+//In PHP the strings don`t act like arrays. So cant use sort() in a string.
 ?>
 </body>
 </html>

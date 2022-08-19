@@ -1,17 +1,32 @@
 <?php 
+
+    $names = ["Pedro", "Sophia", "Maria", "Django"];
+
 // this is a supergobal variable that catches data sent with the post method.
 
-if (isset($_POST['submit'])) {
+if(isset($_POST['submit'])) {
 
    $username = $_POST['username'];
    $userpassword =  $_POST['userpassword'];
 
-   echo $username;
-   echo "<br>";
-   echo $userpassword;
-   echo "<br>";
-   echo isset($_POST['submit']);
+//    echo $username;
+//    echo "<br>";
+//    echo $userpassword;
+//    echo "<br>";
+//    echo isset($_POST['submit']);
 
+    if (strlen($username) < 5) {
+        echo "<p style='color: red';>Username has to be longer than five</p> ";
+    }
+
+    if (!in_array($username, $names)) {
+        echo "Sorry, user not found.";
+    } else {
+        echo "User logged in.";
+    }
+
+    //It is common to create another file to handle the data being sent.
+    
 };
 
 

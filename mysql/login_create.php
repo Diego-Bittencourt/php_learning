@@ -1,39 +1,13 @@
 <?php 
-
+include "db.php";
+include "functions.php";
 
 if (isset($_POST['submit'])) {
-
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    $connection = mysqli_connect('localhost', 'root', '', 'loginapp');
-    //The mysqli_connect() is an api that connects to the MYSQL database. The params are
-    //the server, username, password and place
-
-    if ($connection) {
-        echo "we are connected";
-    } else {
-        die("Database connection failed");
-        // The die() is an inbuilt function in PHP. It is used to print message and exit from the current php script. It is equivalent to exit() function in PHP. Syntax : die($message)
-    }
-
-    $query = "INSERT INTO users(username, password) ";
-    $query .= "VALUES ('$username', '$password')";
-
-    $result = mysqli_query($connection, $query);
-    // mysqli_query is a built in function to query the database. It gets two parameters, the conection and the data being query
-
-    if(!$result) {
-        die('Quer FAILED' . mysqli_error($connection));
-    }
 
 }
 
 
-
-
-
-
+createRows();
 
 ?>
 
@@ -51,6 +25,7 @@ if (isset($_POST['submit'])) {
     <div class="container">
 
         <div class="col-xs-6">
+            <h1 class="text-center">Create Account</h1>
             <form action="login.php" method="post">
 
                 <div class="form-group">
@@ -63,7 +38,7 @@ if (isset($_POST['submit'])) {
                     <input type="password" name="password" class="form-control">
                 </div>
 
-                <input class="btn btn-primary" type="submit" name="submit" value="Submit">
+                <input class="btn btn-primary" type="submit" name="submit" value="CREATE">
 
             </form>
 

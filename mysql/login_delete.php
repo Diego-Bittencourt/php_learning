@@ -33,6 +33,7 @@ if (isset($_POST['submit'])) {
     <div class="container">
 
         <div class="col-sm-6">
+            <h1 class="text-center">Delete record</h1>
             <form action="login.php" method="post">
 
                 <div class="form-group">

@@ -8,24 +8,8 @@ include "functions.php";
 
 if (isset($_POST['submit'])) {
 
-   $username =  $_POST['username'];
-   $password =  $_POST['password'];
-   $id = $_POST['id'];
+    updateTable();
 
-
-   //VERY IMPORT, these strings are going to be a sql query, so don't forget to put spaces and commas around words.
-   $query = "UPDATE users SET ";
-   $query .= "username = '$username', ";
-   $query .= "password = '$password' ";
-   $query .= "WHERE id = $id ";
-//    The two username and password are inside brackets cuz they are strings. The id is a interger, so quotes are not used.
-//    Instead of writing a long string, I made small strings and concatenate them.
-
-
-   $result = mysqli_query($connection, $query);
-   if (!$result) {
-    die("Query Failed" . mysqli_error($connection));
-   }
 }
 
 
@@ -49,6 +33,7 @@ if (isset($_POST['submit'])) {
     <div class="container">
 
         <div class="col-sm-6">
+            <h1 class="text-center">Update info</h1>
             <form action="login.php" method="post">
 
                 <div class="form-group">

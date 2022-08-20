@@ -1,6 +1,40 @@
 <?php 
 include "db.php";
 
+
+
+function createRows() {
+    if (isset($_POST['submit'])) {
+    global $connection;
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    $connection = mysqli_connect('localhost', 'root', '', 'loginapp');
+    //The mysqli_connect() is an api that connects to the MYSQL database. The params are
+    //the server, username, password and place
+
+    if ($connection) {
+        echo "we are connected";
+    } else {
+        die("Database connection failed");
+        // The die() is an inbuilt function in PHP. It is used to print message and exit from the current php script. It is equivalent to exit() function in PHP. Syntax : die($message)
+    }
+
+    $query = "INSERT INTO users(username, password) ";
+    $query .= "VALUES ('$username', '$password')";
+
+    $result = mysqli_query($connection, $query);
+    // mysqli_query is a built in function to query the database. It gets two parameters, the conection and the data being query
+
+    if(!$result) {
+        die('Quer FAILED' . mysqli_error($connection));
+    } else {
+        echo "Record created.";
+    }
+    }
+}
+ 
+
 function showAllData() {
     global $connection;
     //The function will only have access to global variables f I put this keyword inside the function.
@@ -40,7 +74,26 @@ $query .= "WHERE id = $id ";
 $result = mysqli_query($connection, $query);
 if (!$result) {
  die("Query Failed" . mysqli_error($connection));
+} else {
+    echo "Record Updated";
 }
+}
+
+function deleteRows() {
+    global $connection;
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $id = $_POST['id'];
+
+    $query = "DELETE FROM users ";
+    $query .= "WHERE id = $id ";
+
+    $result = mysqli_query($connection, $query);
+    if(!$result) {
+        die("QUERY FAILED" . mysqli_error($connection));
+    } else {
+        echo "Record deleted.";
+    }
 }
 
 ?>

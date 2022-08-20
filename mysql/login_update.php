@@ -1,30 +1,32 @@
 <?php
 
-
 include "db.php";
-include "functions.php";
 // I created another file to contain the code responsible for connecting with the database.
-//The mysqli_connect() is an api that connects to the MYSQL database. The params are
-//the server, username, password and place
 
-if ($connection) {
-    echo "we are connected";
-} else {
-    die("Database connection failed");
-    // The die() is an inbuilt function in PHP. It is used to print message and exit from the current php script. It is equivalent to exit() function in PHP. Syntax : die($message)
+include "functions.php";
+// I created a file to hold the query code.
+
+if (isset($_POST['submit'])) {
+
+   $username =  $_POST['username'];
+   $password =  $_POST['password'];
+   $id = $_POST['id'];
+
+
+   //VERY IMPORT, these strings are going to be a sql query, so don't forget to put spaces and commas around words.
+   $query = "UPDATE users SET ";
+   $query .= "username = '$username', ";
+   $query .= "password = '$password' ";
+   $query .= "WHERE id = $id ";
+//    The two username and password are inside brackets cuz they are strings. The id is a interger, so quotes are not used.
+//    Instead of writing a long string, I made small strings and concatenate them.
+
+
+   $result = mysqli_query($connection, $query);
+   if (!$result) {
+    die("Query Failed" . mysqli_error($connection));
+   }
 }
-
-$query = "SELECT * FROM users";
-
-$result = mysqli_query($connection, $query);
-// mysqli_query is a built in function to query the database. It gets two parameters, the conection and the data being query
-
-if (!$result) {
-    die('Quer FAILED' . mysqli_error($connection));
-}
-echo $query;
-
-
 
 
 
@@ -47,35 +49,35 @@ echo $query;
     <div class="container">
 
         <div class="col-sm-6">
+            <form action="login.php" method="post">
 
-            <?php
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" class="form-control">
+                </div>
 
-            // while ($row = mysqli_fetch_row($result)) {
-            //     print_r($row);
-            // }
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" class="form-control">
+                </div>
 
-            //Now I'm using the mysqli_fetch functions that fetch data from the database.
-            while ($row = mysqli_fetch_assoc($result)) {
-            ?>
-                <!-- closing php to use the <pre> html tag -->
-
-                <pre>
-
-            <?php
-                // opening php again to use the print_r function
-
-                print_r($row);
-
-            ?>
-            <!-- closing php again to wrap the print_r in the pre html tag -->
-        </pre>
-
-            <?php
-            }
+                <div class="form-group">
+                    <select name="id" id="">
 
 
-            ?>
+                        <?php 
+                        
+                        showAllData();
+                        
+                        ?>
+                    <!-- <option value="">Id</option> -->
 
+                    </select>
+                </div>
+
+                <input class="btn btn-primary" type="submit" name="submit" value="UPDATE">
+
+            </form>
         </div>
 
 

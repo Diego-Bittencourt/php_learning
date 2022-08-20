@@ -1,8 +1,8 @@
 <?php
 
 
-
 include "db.php";
+include "functions.php";
 // I created another file to contain the code responsible for connecting with the database.
 //The mysqli_connect() is an api that connects to the MYSQL database. The params are
 //the server, username, password and place

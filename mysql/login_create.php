@@ -1,18 +1,36 @@
 <?php 
 
-if(isset($_POST['submit'])) {
 
-    
+if (isset($_POST['submit'])) {
 
- $username = $_POST['username'];
- $password = $_POST['password'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
- if(!$username || !$password) {
+    $connection = mysqli_connect('localhost', 'root', '', 'loginapp');
+    //The mysqli_connect() is an api that connects to the MYSQL database. The params are
+    //the server, username, password and place
 
- }
- echo "These fields cannot be blank";
+    if ($connection) {
+        echo "we are connected";
+    } else {
+        die("Database connection failed");
+        // The die() is an inbuilt function in PHP. It is used to print message and exit from the current php script. It is equivalent to exit() function in PHP. Syntax : die($message)
+    }
+
+    $query = "INSERT INTO users(username, password) ";
+    $query .= "VALUES ('$username', '$password')";
+
+    $result = mysqli_query($connection, $query);
+    // mysqli_query is a built in function to query the database. It gets two parameters, the conection and the data being query
+
+    if(!$result) {
+        die('Quer FAILED' . mysqli_error($connection));
+    }
 
 }
+
+
+
 
 
 

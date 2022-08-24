@@ -62,6 +62,14 @@ $password =  $_POST['password'];
 $id = $_POST['id'];
 
 
+$username = mysqli_real_escape_string($connection, $username);
+$password = mysqli_real_escape_string($connection, $password);
+
+//To avoid attacks a malicious entries, PHP offers this function that escape quotes and other dangerous characteres
+//It takes two parametes, the connection and the string to be cleaned.
+//Its a good practice to assign the variable to the return of this function
+
+
 //VERY IMPORT, these strings are going to be a sql query, so don't forget to put spaces and commas around words.
 $query = "UPDATE users SET ";
 $query .= "username = '$username', ";

@@ -74,8 +74,8 @@ $hashFormat = "$2y$10$";
 $salt = "iusesomecraystrings22";
 //the salt variable can be anything you want
 
-$hashF_and_salt = $hashFormat . $salt;
 
+$hashF_and_salt = $hashFormat . $salt;
 $password = crypt($password, $hashF_and_salt);
 // the crypt function takes the string you want to encrypt and the other variable you wrote as a noite to the password.
 

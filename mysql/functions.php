@@ -69,6 +69,17 @@ $password = mysqli_real_escape_string($connection, $password);
 //It takes two parametes, the connection and the string to be cleaned.
 //Its a good practice to assign the variable to the return of this function
 
+$hashFormat = "$2y$10$";
+
+$salt = "iusesomecraystrings22";
+//the salt variable can be anything you want
+
+$hashF_and_salt = $hashFormat . $salt;
+
+$password = crypt($password, $hashF_and_salt);
+// the crypt function takes the string you want to encrypt and the other variable you wrote as a noite to the password.
+
+
 
 //VERY IMPORT, these strings are going to be a sql query, so don't forget to put spaces and commas around words.
 $query = "UPDATE users SET ";

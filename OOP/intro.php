@@ -1,13 +1,25 @@
 <?php 
 
 //Defining a class
+//first letter is capitalized
 class Car {
 
-}
-//first letter is capitalized
+    function moveWheels() {
+        echo "Wheels move";
+    }
 
-if (class_exists("Car")) {
-    //the class_exists() is a built in function that checks the existence of a class.
+
+}
+
+$mercedez = new Car();
+$bmw = new Car();
+
+$bmw->moveWheels();
+$mercedes->moveWheels();
+
+
+if (method_exists("Car", "moveWheels")) {
+    //the class_exists()/method_exists() are built in functions that checks the existence of a class.
 echo "yayyyy nice";
 } else {
     echo "NooooooOO";

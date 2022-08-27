@@ -30,6 +30,17 @@ echo $bmw->wheels;
 $bmw->doors = 6;
 //You can change a value inside the object with the syntax above.
 
+//lets create another class and inherit all methods and properties from the car class
+class Plane extends Car{
+    //The class Plane gets all the class Car has automatically.
+    var $wheels = 10; //overwriting an inherited property.
+};
+$jet = new Plane();
+
+echo $jet->wheels; //echoing an inherited property
+$jet->moveWheels(); //executing an inherited method
+
+
 
 if (method_exists("Car", "moveWheels")) {
     //the class_exists()/method_exists() are built in functions that checks the existence of a class.
